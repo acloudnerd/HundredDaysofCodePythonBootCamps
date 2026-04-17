@@ -3,5 +3,3 @@ class Question:
         self.text = txt
         self.answer = ans
 
-# ob = Question("Tshepo", "False")
-# print(ob.text, ob.answer)
