@@ -11,11 +11,16 @@ def random_color():
     b = random.randint(0, 255)
     return (r, g, b)
 
-directions = [0, 90, 180, 270]
-tim.pensize(10)
-tim.speed("fastest")
 
-for _ in range(200):
-    tim.color(random_color())
-    tim.forward(30)
-    tim.setheading(random.choice(directions))
+if __name__ == "__main__":
+    tim = t.Turtle()
+    directions = [0, 90, 180, 270]
+    tim.pensize(10)
+    tim.speed("fastest")
+
+    for _ in range(200):
+        tim.color(random_color())
+        tim.forward(30)
+        tim.setheading(random.choice(directions))
+
+    t.done()
