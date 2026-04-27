@@ -13,7 +13,6 @@ def size_of_graph(size):
         tee.circle(100)
         tee.setheading(tee.heading() + size)
 
-
 size_of_graph(10)
 screen = t.Screen()
 screen.exitonclick()
