@@ -25,7 +25,7 @@ screen.onkey(snake.right, "Right")
 game_on = True
 while game_on:
     screen.update()
-    time.sleep(0.1)
+    time.sleep(0.1 * 0.9 ** scoreboard.score)
     snake.move()
 
     if snake.head.distance(food) < 15:
@@ -40,7 +40,7 @@ while game_on:
     # detect collision with the tail
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
-            scoreboard.reset()
-            snake.reset()
+            scoreboard.game_over()
+            game_on = False
 
 screen.exitonclick()
