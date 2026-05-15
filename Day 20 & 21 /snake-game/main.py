@@ -11,7 +11,6 @@ screen.title("Welcome to Snake Park!")
 screen.tracer(0)
 
 snake = Snake()
-snake.create_snake()
 
 food = Food()
 
@@ -40,9 +39,7 @@ while game_on:
 
     # detect collision with the tail
     for segment in snake.segments[1:]:
-        if segment == snake.head:
-            pass
-        elif snake.head.distance(segment) < 10:
+        if snake.head.distance(segment) < 10:
             scoreboard.reset()
             snake.reset()
 
