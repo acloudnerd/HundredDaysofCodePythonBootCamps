@@ -24,9 +24,9 @@ class Scoreboard(Turtle):
         self.clear()
         self.update_scoreboard()
 
-    # def game_over(self):
-    #     self.goto(ORIGIN)
-    #     self.write(f"GAME OVER\nFinal score: {self.score}", align=ALIGNMENT, font=FONT)
+    def game_over(self):
+        self.goto(ORIGIN)
+        self.write(f"GAME OVER\nFinal score: {self.score}", align=ALIGNMENT, font=FONT)
 
     def reset(self):
         if self.score > self.high_score:
