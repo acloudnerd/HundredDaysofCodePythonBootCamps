@@ -8,7 +8,7 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 1
+WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 FONT_TUPLE = (FONT_NAME, 50, "bold")
@@ -61,7 +61,7 @@ def count_down(count):
     else:
         start_timer()
         marks = ""
-        work_sessions = math.floor(reps / 2)
+        work_sessions = math.floor((reps + 1) / 2)
         for _ in range(work_sessions):
             marks += "✔"
         check_marks.config(text=marks)
