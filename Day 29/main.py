@@ -3,8 +3,7 @@ from PIL import Image, ImageTk
 
 # constants
 CANVAS_W, CANVAS_H = 200, 200
-PINK = "#e2979c"
-
+WHITE = "#FFFFFF"
 
 # creating the window
 window = Tk()
@@ -16,11 +15,40 @@ window.resizable(False, False)
 canvas = Canvas(width=CANVAS_W, height=CANVAS_H)
 
 pil_image = Image.open("logo.png").resize((CANVAS_W, CANVAS_H)).convert("RGBA")
-background = Image.new("RGBA", (CANVAS_W, CANVAS_H), PINK)
+background = Image.new("RGBA", (CANVAS_W, CANVAS_H), WHITE)
 background.paste(pil_image, mask=pil_image.split()[3])
 logo_img = ImageTk.PhotoImage(background.convert("RGB"))
 canvas.create_image(CANVAS_W // 2, CANVAS_H // 2, image=logo_img)
-canvas.grid(column=1, row=1)
+canvas.grid(row=1, column=1,columnspan=3, sticky="ew")
+
+# website
+website_label = Label(window, text = "Website:")
+website_label.grid(row=2, column=0)
+website_textbox = Entry(window)
+website_textbox.grid(row=2, column=1, columnspan=3, sticky="ew")
+
+# email
+username_label = Label(window, text="Username/Email:")
+username_label.grid(row=3, column=0)
+username_textbox = Entry(window)
+username_textbox.grid(row=3, column=1, columnspan=3, sticky="ew")
+
+# password
+password_label = Label(window, text="Password:")
+password_label.grid(row=4, column=0)
+password_textbox = Entry(window)
+password_textbox.grid(row=4, column=1)
+
+# generate password button
+generate_password = Button(text="Generate password")
+generate_password.grid(row=4, column=2, sticky="ew")
+
+# add password to the list
+
+add_pswd = Button(text="Add")
+add_pswd.grid(row=5, column=1, columnspan=4, sticky="ew")
+
+
 
 
 window.mainloop()
