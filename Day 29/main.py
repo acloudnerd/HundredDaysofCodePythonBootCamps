@@ -1,5 +1,6 @@
 from tkinter import *
 from PIL import Image, ImageTk
+from tkinter import messagebox
 
 # constants
 CANVAS_W, CANVAS_H = 200, 200
@@ -9,15 +10,26 @@ WHITE = "#FFFFFF"
 # save input data to a file
 
 def save():
-    with open("data.txt", "a") as f:
-        f.write(website_textbox.get() + " | " + username_textbox.get() + " | " + password_textbox.get() + "\n")
+    website = website_textbox.get()
+    username = username_textbox.get()
+    password = password_textbox.get()
 
-    clear()
+    is_okay = messagebox.askokcancel(title=website,
+                                     message=f"These are the details entered: \nUsername: {username}: \nPassword: {password} \nIs it okay to save?")
 
+    if is_okay:
+        with open("data.txt", "a") as f:
+            f.write(website + " | " + username + " | " + password + "\n")
+
+        clear()
+
+
+# clear the fields
 def clear():
     website_textbox.delete(0, END)
     username_textbox.delete(0, END)
     password_textbox.delete(0, END)
+
 
 # creating the window
 window = Tk()
@@ -60,7 +72,6 @@ generate_password = Button(text="Generate password")
 generate_password.grid(row=4, column=2, sticky="ew")
 
 # add password to the list
-
 add_pswd = Button(text="Add", command=save)
 add_pswd.grid(row=5, column=1, columnspan=4, sticky="ew")
 
