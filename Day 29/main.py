@@ -14,13 +14,17 @@ def save():
     username = username_textbox.get()
     password = password_textbox.get()
 
-    is_okay = messagebox.askokcancel(title=website,
-                                     message=f"These are the details entered: \nUsername: {username}: \nPassword: {password} \nIs it okay to save?")
+    if not validations(website, username, password):
+        return
+
+    is_okay = messagebox.askokcancel(
+        title=website,
+        message=f"These are the details entered:\nUsername: {username}\nPassword: {password}\nIs it okay to save?"
+    )
 
     if is_okay:
         with open("data.txt", "a") as f:
             f.write(website + " | " + username + " | " + password + "\n")
-
         clear()
 
 
@@ -30,6 +34,17 @@ def clear():
     username_textbox.delete(0, END)
     password_textbox.delete(0, END)
 
+# validations
+
+def validations(website, username, password):
+    if not website or not username or not password:
+        messagebox.showerror(
+            title="Do not allow empty fields",
+            message="Please do not leave any fields empty"
+        )
+        return False
+    return True
+    
 
 # creating the window
 window = Tk()
